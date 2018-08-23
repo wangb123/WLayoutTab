@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+
+buildscript {
+    ext.kotlin_version = '1.2.60'
+
+    /**
+     * 构建发布使用，发布到maven
+     */
+    ext.pub_user = "wangbing"//用户名
+    ext.pub_group = "org.wbing"//组织
+    ext.pub_repo = "maven"//仓库
+    ext.pub_website = "https://gitee.com/wbing123/expect_component.git"//网址
+
+    /**
+     * 编译使用
+     */
+    ext.config_compileSdkVersion = 28//编译
+    ext.config_buildToolsVersion = '28.0.1'//构建工具
+    ext.config_targetSdkVersion = 28//target
+
+    /**
+     * 依赖库版本
+     */
+    ext.v_kt = '1.2.51'//kotlin版本号
+    ext.v_br = '0.8.1'//bintray-release发布工具版本号
+    ext.v_support = '28.0.0-rc01'//
+    ext.v_refresh = '1.1.0-alpha-14'//下拉刷新
+    ext.v_arouter = '1.3.1'//ARouter程序
+    ext.v_arouter_compiler = '1.1.4'//ARouter编译
+    ext.v_arouter_annotation = '1.0.4'//ARouter注解
+
+    /**
+     * 依赖库
+     */
+    ext.api_kt = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$v_kt"//kotlin
+    ext.api_v4 = "com.android.support:support-v4:25.2.0"//设计
+    ext.api_design = "com.android.support:design:$v_support"//设计
+    ext.api_palette = "com.android.support:palette-v7:$v_support"//Bitmap中获取颜色的扩展
+    ext.api_appcompat = "com.android.support:appcompat-v7:$v_support"//扩展
+    ext.api_recyclerview = "com.android.support:recyclerview-v7:$v_support"//列表
+    ext.api_vector_drawable = "com.android.support:support-vector-drawable:$v_support"//svg图
+
+    ext.api_arouter = "com.alibaba:arouter-api:$v_arouter"//阿里ARouter
+    ext.api_arouter_compiler = "com.alibaba:arouter-compiler:$v_arouter_compiler"
+    ext.api_arouter_annotation = "com.alibaba:arouter-annotation:$v_arouter_annotation"
+
+    ext.api_refresh = "com.scwang.smartrefresh:SmartRefreshLayout:$v_refresh"//下拉刷新
+    ext.api_refresh_header = "com.scwang.smartrefresh:SmartRefreshHeader:$v_refresh"//下拉刷新
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$v_kt"//kotlin
+
+        classpath "com.novoda:bintray-release:$v_br"//构建发布
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url "https://dl.bintray.com/wangbing/maven" }
+    }
+    //编码报错
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

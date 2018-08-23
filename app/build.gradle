@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    generateStubs = true
+    arguments {
+        arg("moduleName", project.getName())
+    }
+}
+android {
+    compileSdkVersion rootProject.ext.config_compileSdkVersion
+    buildToolsVersion rootProject.ext.config_buildToolsVersion
+    defaultConfig {
+        applicationId "org.wbing.layout.app_tab"
+        minSdkVersion 15
+        targetSdkVersion rootProject.ext.config_targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        ndk {
+//            abiFilters "armeabi-v7a，x86"
+        }
+        vectorDrawables.useSupportLibrary = true
+
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    packagingOptions {
+        exclude 'META-INF/library_release.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "$api_kt"
+    implementation "$api_appcompat"
+    implementation 'org.wbing:base:0.1.4'
+
+
+    implementation project(':library')
+    //...library中的引用库
+}
