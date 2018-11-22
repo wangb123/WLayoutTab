@@ -23,6 +23,7 @@
             android:layout_height="@dimen/dp_40"
             android:layout_gravity="bottom"
             android:background="@color/color_brand"
+            app:w_tab_tab_layout="@layout/layout_tab"
             app:w_tab_tab_padding="@dimen/dp_10" />
 
 

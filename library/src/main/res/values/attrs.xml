@@ -60,6 +60,8 @@
     <attr name="w_tab_tab_space_equal" format="boolean" />
     <!-- 设置tab固定大小 -->
     <attr name="w_tab_tab_width" format="dimension" />
+    <!--设置tab的布局-->
+    <attr name="w_tab_tab_layout" format="reference" />
 
     <!-- title -->
     <!-- 设置字体大小 -->
@@ -107,6 +109,7 @@
         <attr name="w_tab_tab_padding" />
         <attr name="w_tab_tab_space_equal" />
         <attr name="w_tab_tab_width" />
+        <attr name="w_tab_tab_layout" />
 
         <!-- title -->
         <attr name="w_tab_textsize" />
@@ -149,6 +152,7 @@
         <attr name="w_tab_tab_padding" />
         <attr name="w_tab_tab_space_equal" />
         <attr name="w_tab_tab_width" />
+        <attr name="w_tab_tab_layout" />
 
         <!-- title -->
         <attr name="w_tab_textsize" />
@@ -198,6 +202,7 @@
         <attr name="w_tab_tab_padding" />
         <attr name="w_tab_tab_space_equal" />
         <attr name="w_tab_tab_width" />
+        <attr name="w_tab_tab_layout" />
 
         <!-- title -->
         <attr name="w_tab_textsize" />

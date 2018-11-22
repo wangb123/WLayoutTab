@@ -48,7 +48,7 @@ public class MainActivity extends WAct<ActivityMainBinding> {
         @Nullable
         @Override
         public CharSequence getPageTitle(int position) {
-            return "tabtab" + position;
+            return "tabtab\n" + position;
         }
 
         @Override

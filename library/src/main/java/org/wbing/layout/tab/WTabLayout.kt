@@ -31,6 +31,7 @@ class WTabLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private var mTabPadding: Float = 0.toFloat()
     private var mTabSpaceEqual: Boolean = false
     private var mTabWidth: Float = 0.toFloat()
+    private var mTabLayout: Int = R.layout.w_tab
 
     /**
      * Indicator
@@ -254,6 +255,7 @@ class WTabLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
         mTabSpaceEqual = ta.getBoolean(R.styleable.WTabLayout_w_tab_tab_space_equal, false)
         mTabWidth = ta.getDimension(R.styleable.WTabLayout_w_tab_tab_width, dp2px(-1f).toFloat())
         mTabPadding = ta.getDimension(R.styleable.WTabLayout_w_tab_tab_padding, (if (mTabSpaceEqual || mTabWidth > 0) dp2px(0f) else dp2px(20f)).toFloat())
+        mTabLayout = ta.getResourceId(R.styleable.WTabLayout_w_tab_tab_layout, mTabLayout)
 
         mSnapOnTabClick = ta.getBoolean(R.styleable.WTabLayout_w_tab_smoothScroll, false)
 
@@ -543,7 +545,7 @@ class WTabLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
         this.mTabCount = mViewPager?.adapter?.count!!
         var i = 0
         while (i < mTabCount) {
-            val tabView = View.inflate(context, R.layout.w_tab, null)
+            val tabView = View.inflate(context, mTabLayout, null)
             val pageTitle = mViewPager!!.adapter!!.getPageTitle(i)
             addTab(i, pageTitle, tabView)
             i++
